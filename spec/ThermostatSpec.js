@@ -28,7 +28,7 @@ describe('Thermostat', function(){
     expect(function() {thermostat.decrease()} ).toThrow('Warning minimum temperature')
   });
 
-  it("should return true if power saving mode is on", function(){
+  it("has a default of true for the power saving mode", function(){
     expect(thermostat.powerSavingMode).toEqual(true);
   });
 
@@ -38,6 +38,8 @@ describe('Thermostat', function(){
   });
 
   it("can switch PSM on", function(){
+    thermostat.switchPowerSavingModeOff();
+    expect(thermostat.powerSavingMode).toBeFalse();
     thermostat.switchPowerSavingModeOn();
     expect(thermostat.powerSavingMode).toBeTrue();
   });
@@ -56,4 +58,11 @@ describe('Thermostat', function(){
     };
     expect(thermostat.temperature).toEqual(32);
   })
+
+  it("should reset the temperature to 20", function(){
+    thermostat.increase();
+    thermostat.reset();
+    expect(thermostat.temperature).toEqual(20);
+  });
+
 });

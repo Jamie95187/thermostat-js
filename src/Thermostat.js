@@ -34,6 +34,10 @@ Thermostat.prototype.switchPowerSavingModeOn = function(){
   this._maximum = maxPowerSavingOn;
 };
 
+Thermostat.prototype.reset = function() {
+  this.temperature = 20
+};
+
 Thermostat.prototype._isMinimumTemperature = function() {
   return this.temperature === this.MINIMUM;
 };
