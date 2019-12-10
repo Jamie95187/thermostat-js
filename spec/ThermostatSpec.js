@@ -65,4 +65,30 @@ describe('Thermostat', function(){
     expect(thermostat.temperature).toEqual(20);
   });
 
+  it("should show low-usage if temperature is below 18", function(){
+    for(var i = 0; i < 3; i++){
+      thermostat.decrease();
+    };
+    expect(thermostat.currentEnergyUsage()).toEqual("low-usage");
+  });
+
+  it("should show medium-usage if temperature is below 25 & over or equal to 18", function(){
+    for(var i = 0; i < 3; i++){
+      thermostat.decrease();
+    };
+    expect(thermostat.currentEnergyUsage()).toEqual("low-usage");
+
+    for(var i = 0; i < 5; i++){
+      thermostat.increase();
+    };
+    expect(thermostat.currentEnergyUsage()).toEqual("medium-usage");
+  });
+
+  it("should show high-usage if temperature is above or equal to 25", function(){
+    for(var i = 0; i < 10; i++){
+      thermostat.increase();
+    };
+    expect(thermostat.currentEnergyUsage()).toEqual("high-usage");
+  });
+
 });

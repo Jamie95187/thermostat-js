@@ -5,6 +5,7 @@ function Thermostat(){
   this.MINIMUM = 10;
   this._maximum = maxPowerSavingOn;
   this.powerSavingMode = true;
+  this.energyUsage = "medium-usage"
 }
 
 const maxPowerSavingOn = 25;
@@ -36,6 +37,17 @@ Thermostat.prototype.switchPowerSavingModeOn = function(){
 
 Thermostat.prototype.reset = function() {
   this.temperature = 20
+};
+
+Thermostat.prototype.currentEnergyUsage = function() {
+  if (this.temperature < 18) {
+    this.energyUsage = "low-usage";
+  } else if (this.temperature < 25) {
+    this.energyUsage = "medium-usage";
+  } else {
+    this.energyUsage = "high-usage";
+  };
+  return this.energyUsage;
 };
 
 Thermostat.prototype._isMinimumTemperature = function() {
