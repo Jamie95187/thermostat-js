@@ -2,12 +2,19 @@
 
 function Thermostat(){
   this.temperature = 20;
+  this._minimum = MINIMUM;
 }
+
+const MINIMUM = 10;
 
 Thermostat.prototype.increase = function(){
   this.temperature++;
 };
 
 Thermostat.prototype.decrease = function(){
-  this.temperature--;
-}
+  if(this.temperature === this._minimum){
+    throw "Warning minimum temperature";
+  } else {
+    this.temperature--;
+  };
+};

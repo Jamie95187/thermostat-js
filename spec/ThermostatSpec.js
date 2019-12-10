@@ -20,4 +20,11 @@ describe('Thermostat', function(){
     thermostat.decrease();
     expect(thermostat.temperature).toEqual(19);
   });
+
+  it("should not allow temperature to fall before 10", function(){
+    for(var i = 0; i < 10; i++){
+      thermostat.decrease();
+    };
+    expect(function() {thermostat.decrease()} ).toThrow('Warning minimum temperature')
+  });
 });
