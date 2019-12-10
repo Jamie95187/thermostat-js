@@ -3,6 +3,7 @@
 function Thermostat(){
   this.temperature = 20;
   this._minimum = MINIMUM;
+  this._maximum = 25;
   this.powerSavingMode = true;
 }
 
