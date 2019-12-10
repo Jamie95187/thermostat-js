@@ -37,6 +37,11 @@ describe('Thermostat', function(){
     expect(thermostat.powerSavingMode).toBeFalse();
   });
 
+  it("can switch PSM on", function(){
+    thermostat.switchPowerSavingModeOn();
+    expect(thermostat.powerSavingMode).toBeTrue();
+  });
+
   it("should not allow temperature to rise above 25 when power saving mode is on", function(){
     for(var i = 0; i < 6; i++){
       thermostat.increase();
