@@ -73,14 +73,6 @@ describe('Thermostat', function(){
   });
 
   it("should show medium-usage if temperature is below 25 & over or equal to 18", function(){
-    for(var i = 0; i < 3; i++){
-      thermostat.decrease();
-    };
-    expect(thermostat.currentEnergyUsage()).toEqual("low-usage");
-
-    for(var i = 0; i < 5; i++){
-      thermostat.increase();
-    };
     expect(thermostat.currentEnergyUsage()).toEqual("medium-usage");
   });
 
