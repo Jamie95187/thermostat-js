@@ -27,4 +27,8 @@ describe('Thermostat', function(){
     };
     expect(function() {thermostat.decrease()} ).toThrow('Warning minimum temperature')
   });
+
+  it("should return true if power saving mode is on", function(){
+    expect(thermostat.powerSavingMode).toEqual(true);
+  });
 });
