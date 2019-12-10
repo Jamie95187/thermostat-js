@@ -37,12 +37,18 @@ describe('Thermostat', function(){
     expect(thermostat.powerSavingMode).toBeFalse();
   });
 
-  it("should have a maximum temperature of 25 when power saving mode is on", function(){
-    expect(thermostat._maximum).toEqual(25);
+  it("should not allow temperature to rise above 25 when power saving mode is on", function(){
+    for(var i = 0; i < 6; i++){
+      thermostat.increase();
+    };
+    expect(thermostat.temperature).toEqual(25);
   });
 
-  it("should have a maximum temperature of 32 when power saving mode is off", function(){
+  it("should not allow temperature to rise above 32 when power saving mode is off", function(){
     thermostat.switchPowerSavingModeOff();
-    expect(thermostat._maximum).toEqual(32);
+    for(var i = 0; i < 13; i++){
+      thermostat.increase();
+    };
+    expect(thermostat.temperature).toEqual(32);
   })
 });

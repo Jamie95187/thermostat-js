@@ -8,11 +8,13 @@ function Thermostat(){
 }
 
 Thermostat.prototype.increase = function(){
-  this.temperature++;
+  if (!this._isMaximumTemperature()) {
+    this.temperature++;
+  };
 };
 
 Thermostat.prototype.decrease = function(){
-  if(this.temperature === this.MINIMUM){
+  if (this._isMinimumTemperature()){
     throw "Warning minimum temperature";
   } else {
     this.temperature--;
@@ -24,10 +26,10 @@ Thermostat.prototype.switchPowerSavingModeOff = function(){
   this._maximum = 32;
 };
 
-// Thermostat.prototype._isPowerSaving = function () {
-//   if(this.powerSavingMode === true){
-//     return 25;
-//   } else if(this.powerSavingMode === false){
-//     return 32;
-//   };
-// };
+Thermostat.prototype._isMinimumTemperature = function() {
+  return this.temperature === this.MINIMUM;
+};
+
+Thermostat.prototype._isMaximumTemperature = function() {
+  return this.temperature === this._maximum;
+};
